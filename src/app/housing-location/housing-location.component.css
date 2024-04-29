@@ -23,8 +23,7 @@ section.listing a {
     padding-left: 20px;
     text-decoration: none;
     color: var(--primary-color);
-}
-    section.listing a::after {
+} section.listing a::after {
     content: "\203A";
     margin-left: 5px;
 }

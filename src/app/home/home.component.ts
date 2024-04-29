@@ -9,10 +9,16 @@ import { HousingService } from '../housing.service';
   standalone: true,
   imports: [CommonModule, HousingLocationComponent],
   template: `
-  <input type="text" placeholder="Filter by city" #filter>
-  <button class="primary" type="button" (click)="filterResults(filter.value)">Search</button>
-  <app-housing-location *ngFor="let housingLocation of filteredLocationList" [housingLocation]="housingLocation"></app-housing-location>
-`,
+    <section>
+      <form>
+        <input type="text" placeholder="Filter by city" #filter>
+        <button class="primary" type="button" (click)="filterResults(filter.value)">Search</button>
+      </form>
+    </section>
+    <section class="results">
+      <app-housing-location *ngFor="let housingLocation of filteredLocationList" [housingLocation]="housingLocation"></app-housing-location>
+    </section>
+  `,
   styleUrl: './home.component.css'
 })
 
@@ -30,7 +36,7 @@ export class HomeComponent {
     return;
     }
     this.filteredLocationList = this.housingLocationList.filter(
-    housingLocation => housingLocation?.city.toLowerCase().includes(text.toLowerCase())
+      housingLocation => housingLocation?.city.toLowerCase().includes(text.toLowerCase())
     );
   }
 }
